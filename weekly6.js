@@ -159,25 +159,36 @@ scene.add(lampShade);
 box("lamp stem", [0.09, 0.8, 0.09], [1.5, 1.68, 1.15], materials.metal);
 
 const ambientLight = new THREE.HemisphereLight(
-    0x4b0077, 
-    0x330033, 
+    0x666666, 
+    0x000055, 
     1.5
 );
 scene.add(ambientLight);
 
-const tvLight = new THREE.PointLight(
-    0x88aaff,
-    20,
-    8
+// const tvLight = new THREE.PointLight(
+//     0x88aaff,
+//     20,
+//     8
+// );
+// tvLight.position.set(3, 2.5, -3);
+// scene.add(tvLight);
+
+const lightning = new THREE.PointLight(
+    0xffffff,
+    0,
+    30
 );
-tvLight.position.set(3, 2.5, -3);
-scene.add(tvLight);
+lightning.position.set(-1.5, 5, -6);
+scene.add(lightning);
+
+const lightningHelper = new THREE.PointLightHelper(lightning);
+scene.add(lightningHelper);
 
 const sunlight = new THREE.DirectionalLight(
-    0x88bbee, 
+    0xaaddff, 
     0.25
 );
-sunlight.position.set(5, 0, -7);
+sunlight.position.set(-7, 10, -7);
 sunlight.castShadow = true;
 sunlight.shadow.mapSize.set(2048, 2048);
 sunlight.shadow.camera.left = -10;
@@ -186,13 +197,13 @@ sunlight.shadow.camera.top = 12;
 sunlight.shadow.camera.bottom = -4;
 scene.add(sunlight);
 
-const lampGlow = new THREE.PointLight(
-    0xccc5ff, 
-    4, 
-    2.75
-);
-lampGlow.position.set(1.5, 2.1, 1.15);
-scene.add(lampGlow);
+// const lampGlow = new THREE.PointLight(
+//     0xccc5ff, 
+//     4, 
+//     2.75
+// );
+// lampGlow.position.set(1.5, 2.1, 1.15);
+// scene.add(lampGlow);
 
 window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -202,6 +213,7 @@ window.addEventListener("resize", () => {
 
 function animate() {
     requestAnimationFrame(animate);
+    lightning.intensity = Math.random() > 0.98 ? 1000 : 0;
     controls.update();
     renderer.render(scene, camera);
 }
