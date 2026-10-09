@@ -159,19 +159,19 @@ scene.add(lampShade);
 box("lamp stem", [0.09, 0.8, 0.09], [1.5, 1.68, 1.15], materials.metal);
 
 const ambientLight = new THREE.HemisphereLight(
-    0x666666, 
-    0x000055, 
+    0x4b0077, 
+    0x330033, 
     1.5
 );
 scene.add(ambientLight);
 
-// const tvLight = new THREE.PointLight(
-//     0x88aaff,
-//     20,
-//     8
-// );
-// tvLight.position.set(3, 2.5, -3);
-// scene.add(tvLight);
+const tvLight = new THREE.PointLight(
+    0x5599cd,
+    20,
+    5
+);
+tvLight.position.set(3, 2.5, -3);
+scene.add(tvLight);
 
 const lightning = new THREE.PointLight(
     0xffffff,
@@ -181,8 +181,8 @@ const lightning = new THREE.PointLight(
 lightning.position.set(-1.5, 5, -6);
 scene.add(lightning);
 
-const lightningHelper = new THREE.PointLightHelper(lightning);
-scene.add(lightningHelper);
+// const lightningHelper = new THREE.PointLightHelper(lightning);
+// scene.add(lightningHelper);
 
 const sunlight = new THREE.DirectionalLight(
     0xaaddff, 
@@ -197,13 +197,24 @@ sunlight.shadow.camera.top = 12;
 sunlight.shadow.camera.bottom = -4;
 scene.add(sunlight);
 
-// const lampGlow = new THREE.PointLight(
-//     0xccc5ff, 
-//     4, 
-//     2.75
-// );
-// lampGlow.position.set(1.5, 2.1, 1.15);
-// scene.add(lampGlow);
+const lampGlow = new THREE.PointLight(
+    0xffaa00, 
+    10, 
+    2
+);
+lampGlow.position.set(1.5, 2.1, 1.15);
+scene.add(lampGlow);
+
+const ghostLight = new THREE.PointLight(
+    0xff0000,
+    25,
+    7
+);
+ghostLight.position.set(-1.1, 2.75, 1);
+scene.add(ghostLight);
+
+// const ghostHelper = new THREE.PointLightHelper(ghostLight);
+// scene.add(ghostHelper);
 
 window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -214,6 +225,8 @@ window.addEventListener("resize", () => {
 function animate() {
     requestAnimationFrame(animate);
     lightning.intensity = Math.random() > 0.98 ? 1000 : 0;
+    tvLight.intensity = Math.random() > 0.9 ? 5 : 20;
+    ghostLight.position.y = Math.sin(Date.now() * 0.0015) * 1.375 + 3.125;
     controls.update();
     renderer.render(scene, camera);
 }
