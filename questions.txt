@@ -1,16 +1,16 @@
 1. Which lighting setup created the strongest mood?
-      
+      The movie scene and the boss battle scene created the strongest moods in my opinion.
 2. Which scene felt most realistic?
-      
+      I think the stormy scene felt the most realistic.
 3. How did the lighting change the emotional feeling of the room?
-      
+      Brighter, more warm toned lights tend to have a more postitive connotation. Darker, more cooler tones typically have a more negative connotation.
 4. Why are Pointlights useful indoors?
-      
+      Pointlights are useful indoors because they emulate
 5. Why are colored lights effective for storytelling?
-      
+      Colored lights are effective for storytelling because colors have certain associations that developers can play off of to create the mood they want.
 6. Which lighting setup required the most experimentation?
-      
+      I did a lot of experimentation in the boss battle scene because I wanted to make sure my floating light didn't go too high or too low so I had to find the precise values to multiply and add to the sine function to make it flucutate between my desired heights.
 7. How did animated lighting improve the scene?
-      
+      Animated lighting helped to make the scene look real and not stagnant.
 8. If this was a real game, which scene would players remember the most and why?
-      
+      I think players would remember the boss battle scene the most because it has the most going on at one time.
